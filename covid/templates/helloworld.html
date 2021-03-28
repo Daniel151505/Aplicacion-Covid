@@ -8,7 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hola Mundo</h1>
+    {% for mylistitem in mylistitems %}
+    <p>{{mylistitem}}</p>
+    {% endfor %}
     <a href="" class="btn btn-danger">Boton</a>
 </body>
 </html>
