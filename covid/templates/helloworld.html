@@ -1,31 +1,96 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Covid-19</title>
 </head>
-<body>
+<style type="text/css">
+    .container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 
-    <form method = "post" action="">
-        {% csrf_token %}
-        <select name="selectedcountry" >
-            {% for country in mylist %}
-             <option> {{country}} </option>
-             {% endfor %}
-        </select>
-        <input type="submit" name="">
-    </form>
+    .margin{
+        margin: 30px;
+    }
+</style>
+<body class="body">
+<div class="mt-5">
+    <h1 style="color: white;text-align: center;">DATOS MUNDIALES DEL <span style="color: red;">COVID-19</span></h1>
     
-    <h1>{{selectedcountry}}</h1>
-    <p>new : {{new}}</p>
-    <p>active : {{active}}</p>
-    <p>critical : {{critical}}</p>
-    <p>recovered : {{recovered}}</p>
-    <p>deaths : {{deaths}}</p>
-    <p>total : {{total}}</p>
+    <div class="mt-5">
+        <form method = "post" class="d-flex justify-content-center align-items-center mt-5" action="" style="margin-top: 50px;">
+                {% csrf_token %}
+                <select class="form-control" style="width: 200px;" name="selectedcountry" >
+                    {% for country in mylist %}
+                    <option> {{country}} </option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-danger" name="">Buscar</button></form>
+            </form>
+    </div>
+    
+</div>
+    
+
+    <h1 style="margin-top:70px;color: white;text-align: center;" > {{selectedcountry}}</h1>
+
+<div class="container text-center text-align-items mt-5">
+    <div class="row col-lg-12 d-flex justify-content-center align-items-center">
+        <div class="card text-white bg-primary mb-3 col-lg-4 margin" style="max-width: 18rem;">
+        <div class="card-body">
+          <h1 class="card-title">{{total}}</h1>
+          <h5 class="card-text">Casos totales</h5>
+          
+        </div>
+      </div>
+      <div class="card text-white bg-secondary mb-3 col-lg-4 margin" style="max-width: 18rem;">
+        <div class="card-body">
+          <h1 class="card-title">{{recovered}}</h1>
+          <h5 class="card-text">Personas recuperadas</h5>
+        </div>
+      </div>
+      <div class="card text-white bg-success mb-3 col-lg-4 margin" style="max-width: 18rem;">
+        <div class="card-body">
+          <h1 class="card-title">{{active}}</h1>
+          <h5 class="card-text">Casos activos</h5>
+        </div>
+      </div>
+    </div>
+    
+</div>
+
+<div class="container text-center text-align-items">
+    <div class="row col-lg-12 d-flex justify-content-center align-items-center">
+        <div class="card text-white bg-danger mb-3 col-lg-4 margin" style="max-width: 18rem;">
+        <div class="card-body">
+          <h1 class="card-title">{{new}}</h1>
+          <h5 class="card-text">Casos nuevos</h5>
+        </div>
+      </div>
+      <div class="card text-white bg-warning mb-3 col-lg-4 margin" style="max-width: 18rem;">
+        <div class="card-body">
+          <h1 class="card-title">{{deaths}}</h1>
+          <h5 class="card-text">Muertos</h5>
+        </div>
+      </div>
+      <div class="card text-white bg-info mb-3 col-lg-4 margin" style="max-width: 18rem;">
+        <div class="card-body">
+          <h1 class="card-title">{{critical}}</h1>
+          <h5 class="card-text">Casos críticos</h5>
+        </div>
+      </div>
+    </div>
+    
+</div>
 
 </body>
 </html>
