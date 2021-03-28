@@ -14,5 +14,10 @@ response = requests.request("GET", url, headers=headers).json()
 
 # Create your views here.
 def helloworldview(request):
-    context = {'response' : response}
-    return render(request,'helloworld.html', context)
+    noofresults = int(response['results'])
+    mylist = []
+    for x in range(0,noofresults):
+
+        mylist.append(response['response'][x]['country'])
+    context = {'mylist' : mylist}
+    return render(request,'helloworld.html',context)
